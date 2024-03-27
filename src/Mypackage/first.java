@@ -66,39 +66,24 @@ public class first {
 		
 		driver.findElement(By.className("snap-primary-button")).click();
 		
-		
+		//clear first 
         driver.findElement(By.xpath("//input[@id='firstName']")).clear();
+        //enter  first name
         driver.findElement(By.xpath("//input[@id='firstName']")).sendKeys("test");
-        
+        //clear last name
         driver.findElement(By.xpath("//input[@id='lastName']")).clear();
-
+         //enter last name
         driver.findElement(By.xpath("//input[@id='lastName']")).sendKeys("user");
-
+         //enter pan number
 
 		driver.findElement(By.xpath("//input[@id='panNumber']")).sendKeys("FHOPL5898N");
 		
-		
-		WebElement radio=driver.findElement(By.xpath("//input[@value='f']"));
+		//gender
+        WebElement radio=driver.findElement(By.xpath("//input[@value='f']"));
 		
 		radio.click();
 		
-		
-		
-		
-		//driver.quit();
-	    
-
-
-		
-
-		
-		
-		
-		
-	   
-		
-		
-		
+		//driver.quit();	
 	}
 
 }
