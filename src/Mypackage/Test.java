@@ -1,7 +1,6 @@
 package Mypackage;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,60 +8,65 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class first {
-         public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
-        	 
-        	 String MobileNumber ="9887766334";
-        	 String MID ="1";
-        	 String Orderid="test3445";
-        	 String Ordervalue ="20000";
-        	 String Username="test user";
-        	 String Email ="testfgdfg@gmail.com";
-        	 String PAN="FTRPH6887N";
-        	 String OTP ="1010";
-        	 String AdminUsername="deevangi@snapmint.com";
-        	 String AdminUserpassword="Password@112";
-        	 String Testframwork ="{:is_enach_required=>0, :kyc=>\"skip\", :voucher_limit=>50000}";
-        	 String UpiID ="77777777777@paytm";
-        	 
-		//System.setProperty("webdriver.chrome.driver", "C:\\Automation\\Deiver\\chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
+public class Test{
+	
+	public static WebDriver driver;
+	
+
+	
+	public void openBrowser() {
+		
+		driver =new ChromeDriver();
+		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		driver.get("https://snapmint:ciHns$@NKSa@qa2.snapmint.com/merchant-demo");
-		System.out.println("open merchant demo page and enter username and password");
+	    driver.get(	"https://snapmint:ciHns$@NKSa@qa2.snapmint.com/merchant-demo");
 		driver.manage().window().maximize();
 		System.out.println("Maximize browser");
 		System.out.println("URL:" + driver.getCurrentUrl());
+	}
+
+	public void merchantdemo(){
+   	 String MobileNumber ="9887766377";
+   	 String MID ="1";
+   	 String Orderid="test29789mnmb";
+   	 String Ordervalue ="20000";
+   	 String Username="test user";
+   	 String Email ="tedfdmnnbgg@gmail.com";   	 
+	
+	driver.findElement(By.id("new-mobile")).sendKeys(MobileNumber);
+	System.out.println("Enter user number");
+	
+   driver.findElement(By.name("merchant_id")).clear();
+	driver.findElement(By.name("merchant_id")).sendKeys(MID);
+	System.out.println("Enter merchant id");
+	    
+	driver.findElement(By.name("order_id")).clear();
+	driver.findElement(By.name("order_id")).sendKeys(Orderid);
+   System.out.println("Enter order id");
+	  
+	driver.findElement(By.name("order_value")).clear();		
+	driver.findElement(By.name("order_value")).sendKeys(Ordervalue);
+	System.out.println("Enter order value");
+	
+	driver.findElement(By.name("full_name")).clear();		
+	driver.findElement(By.name("full_name")). sendKeys(Username);
+	System.out.println("Enter user full name");
+	
+	driver.findElement(By.name("email")).clear();	
+	driver.findElement(By.name("email")). sendKeys(Email);
+	System.out.println("Enter email id");
+	
+	driver.findElement(By.xpath("//input[@id='checksum_btn']")).click();
+	System.out.println("Click create checksum button");
+	driver.findElement(By.xpath("//input[@value='submit']")).click();
+	System.out.println("Click submit button");
+	}
+	
+	public void OTPR() throws InterruptedException{
 		
-		driver.findElement(By.id("new-mobile")).sendKeys(MobileNumber);
-		System.out.println("Enter user number");
-		
-	    driver.findElement(By.name("merchant_id")).clear();
-		driver.findElement(By.name("merchant_id")).sendKeys(MID);
-		System.out.println("Enter merchant id");
-		    
-		driver.findElement(By.name("order_id")).clear();
-		driver.findElement(By.name("order_id")).sendKeys(Orderid);
-	    System.out.println("Enter order id");
-		  
-		driver.findElement(By.name("order_value")).clear();		
-		driver.findElement(By.name("order_value")).sendKeys(Ordervalue);
-		System.out.println("Enter order value");
-		
-		driver.findElement(By.name("full_name")).clear();		
-		driver.findElement(By.name("full_name")). sendKeys(Username);
-		System.out.println("Enter user full name");
-		
-		driver.findElement(By.name("email")).clear();	
-		driver.findElement(By.name("email")). sendKeys(Email);
-		System.out.println("Enter email id");
-		
-		driver.findElement(By.xpath("//input[@id='checksum_btn']")).click();
-		System.out.println("Click create checksum button");
-		driver.findElement(By.xpath("//input[@value='submit']")).click();
-		System.out.println("Click submit button");
-		
+	   	 String PAN="FTRPH6007N";
+	   	 String OTP ="1010";
+
 		driver.findElement(By.xpath("//input[@id='inputBox'][@name='otp']")).sendKeys(OTP);
 		System.out.println("Enter OTP");
 		driver.findElement(By.className("snap-primary-button")).click();
@@ -94,9 +98,19 @@ public class first {
 	    driver.findElement(By.xpath("//div[@class='w-full pt-12']")).click();
 	    System.out.println("User click Next buttton");
 	    System.out.println("Fil registration Form ");
-	    
 	    String CurrentpageURL = driver.getCurrentUrl();
-	         
+
+	    	
+	} 
+	
+	public void AdminPage() throws InterruptedException {
+	   	 String MobileNumber ="9887766377";
+	   	 String AdminUsername="deevangi@snapmint.com";
+	   	 String AdminUserpassword="Password@112";
+	   	 String Testframwork ="{:is_enach_required=>0, :kyc=>\"skip\", :voucher_limit=>50000}";
+
+	    String CurrentpageURL = driver.getCurrentUrl();
+        
 	    driver.get("https://qa2.snapmint.com/admin/login");
 	    System.out.println("Open admin dashboard");
 	    driver.findElement(By.xpath("//input[@id='admin_user_email']")).sendKeys(AdminUsername);
@@ -140,7 +154,12 @@ public class first {
 		
         driver.get(CurrentpageURL);
         System.out.println("print page URL");
-        
+		}
+	
+	public void DPPage() throws InterruptedException {
+		
+	   	 String UpiID ="77777777777@paytm";
+
         driver.findElement(By.xpath("//*[@class='bg-primary text-darkGreen  snap-primary-button w-[100%] px-[0px]']")).click();
 	     //driver.findElement(By.xpath("//button[@class='bg-primary text-darkGreen  snap-primary-button w-[100%] px-[0px]']")).click();
 	     System.out.println("select T&C");
@@ -162,5 +181,7 @@ public class first {
 	     System.out.println("Click Pay Now button");
 	     Thread.sleep(2000);
 	        
-         }      
+
+	}
 }
+
